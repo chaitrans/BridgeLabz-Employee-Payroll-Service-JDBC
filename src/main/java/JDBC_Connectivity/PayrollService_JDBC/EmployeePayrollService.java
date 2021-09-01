@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class EmployeePayrollService {
 
-    //Initializing queries for both tables
+    //initiatilizing queries for both tables
     public static final String INSERT_EMPLOYEE_QUERY = "insert into employee_details (EmployeeID, Name, gender, Mobile_Number , Address) values (?,?,?,?,?)";
 
     public static final String INSERT_PAYROLL_QUERY = "insert into employee_payroll (ID,FirstName, LastName, basic_pay) values (?,?,?,?)";
@@ -27,8 +27,8 @@ public class EmployeePayrollService {
             connection.setAutoCommit(false);
 
             //adding new employee details using transaction
-            insertEmployeeDetail(connection,4,"Mayuri","F","132546","Bhandara");
-            insertPayrollData(connection,4,"Mayuri","Makade",40000);
+            insertEmployeeDetail(connection,15,"Mayuri","F","132546","Bhandara");
+            insertPayrollData(connection,15,"Mayuri","Makade",40000);
 
             //now commit transaction
             connection.commit();
@@ -37,9 +37,9 @@ public class EmployeePayrollService {
             e.printStackTrace();
             try {
                 connection.rollback();
-                System.out.println("JDBC Transaction rolled back successfully");
+                System.out.println("JDBC Transaction Rolled back successfully");
             } catch (SQLException e1) {
-                System.out.println("SQLException in rollback"+e.getMessage());
+                System.out.println("SQLException in Rollback"+e.getMessage());
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -65,7 +65,7 @@ public class EmployeePayrollService {
 
         stmt.executeUpdate();
 
-        System.out.println("Payroll Data inserted successfully for ID=" + ID);
+        System.out.println("Payroll Data inserted successfully for ID = " + ID);
         stmt.close();
 
     }
